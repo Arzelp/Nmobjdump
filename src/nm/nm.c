@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:11:54 2017 Paskal Arzel
-** Last update Wed Feb 22 14:53:48 2017 Paskal Arzel
+** Last update Wed Feb 22 15:36:13 2017 Paskal Arzel
 */
 
 #include <fcntl.h>
@@ -77,6 +77,8 @@ int	my_nm(char *filename, bool multi, int count, int pos)
     return (my_nm_elf(&data, filename));
   else if ((i = strncmp((char *)data.data, "!<arch>", 7)) == 0)
     return (my_nm_arch(&data, filename));
+  else
+    printf("./my_nm: %s: Format de fichier non reconnu\n", filename);
   return (EXIT_SUCCESS);
 }
 
