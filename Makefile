@@ -5,7 +5,7 @@
 ## Login   <paskal.arzel@epitech.eu>
 ##
 ## Started on  Tue Jan 24 14:13:29 2017 Paskal Arzel
-## Last update Wed Feb 22 12:01:11 2017 Paskal Arzel
+## Last update Thu Feb 23 15:41:29 2017 Paskal Arzel
 ##
 
 ECHO	= /bin/echo -e
@@ -28,11 +28,19 @@ SRC_NM	=  $(DIR_NM)nm.c \
 					$(DIR_PR)print_arch.c \
 					$(DIR_PR)print.c
 
-SRC_OBJ	=	 $(DIR_OBJ)objdump.c
+SRC_OBJ	=	 $(DIR_OBJ)objdump.c \
+					$(DIR_OIN)init.c \
+					$(DIR_OPR)print.c \
+					$(DIR_OPR)calc_print.c \
+					$(DIR_OPR)print_line.c
 
 DIR = src/
 
 DIR_NM = src/nm/
+
+DIR_OIN = $(DIR_OBJ)init/
+
+DIR_OPR = $(DIR_OBJ)print/
 
 DIR_PR = $(DIR_NM)print/
 
@@ -59,7 +67,7 @@ OBJS_OBJ	=	$(SRC_OBJ:.c=.o)
 
 OBJS_NM	=	$(SRC_NM:.c=.o)
 
-all:   $(NAME_OBJ) $(NAME_NM)
+all:   nm objdump
 
 objdump:	$(OBJS_OBJ)
 	gcc -o $(NAME_OBJ) $(SRC_OBJ) $(FLAG)

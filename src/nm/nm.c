@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:11:54 2017 Paskal Arzel
-** Last update Wed Feb 22 15:36:13 2017 Paskal Arzel
+** Last update Wed Feb 22 15:47:31 2017 Paskal Arzel
 */
 
 #include <fcntl.h>
@@ -88,10 +88,7 @@ int	main(int ac, char **av)
 
   i = 1;
   if (ac == 1)
-    {
-      my_nm("./a.out", false, 1, 0);
-      return (EXIT_SUCCESS);
-    }
+    return (my_nm("./a.out", false, 1, 0));
   while (i < ac)
     {
       if (my_nm(av[i], ((ac >= 3) ? true : false), ac, i) == EXIT_FAILURE)

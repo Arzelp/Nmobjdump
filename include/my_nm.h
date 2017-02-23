@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:14:17 2017 Paskal Arzel
-** Last update Wed Feb 22 14:39:02 2017 Paskal Arzel
+** Last update Thu Feb 23 15:08:53 2017 Paskal Arzel
 */
 
 #ifndef NM_H__
