@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:44:47 2017 Paskal Arzel
-** Last update Thu Feb 23 16:12:50 2017 Paskal Arzel
+** Last update Thu Feb 23 16:19:00 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -30,7 +30,7 @@ int		my_objdump(char *filename)
   set_obj_fct(&data);
   if (filename == NULL || (data.fd = open(filename, O_RDONLY)) == -1)
   {
-    fprintf(stderr, "nm: %s: No such file\n", filename);
+    fprintf(stderr, "objdump: %s: No such file\n", filename);
     return (EXIT_FAILURE);
   }
   data.fsize = data.filesize(data.fd);
@@ -50,7 +50,7 @@ int		main(int ac, char **av)
 
   i = 1;
   if (ac == 1)
-    return (my_objdump("./a.out"));
+    return (my_objdump("a.out"));
   while (i < ac)
     {
       if (my_objdump(av[i]) == EXIT_FAILURE)

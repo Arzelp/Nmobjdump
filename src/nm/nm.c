@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:11:54 2017 Paskal Arzel
-** Last update Thu Feb 23 16:13:14 2017 Paskal Arzel
+** Last update Thu Feb 23 16:19:52 2017 Paskal Arzel
 */
 
 #include <fcntl.h>
@@ -65,7 +65,7 @@ int	my_nm(char *filename, bool multi, int count, int pos)
 {
   t_nm	data;
   int	i;
-
+ // File truncated
   set_nm_fct(&data);
   data.multi = multi;
   data.ac = count;
@@ -94,7 +94,7 @@ int	main(int ac, char **av)
 
   i = 1;
   if (ac == 1)
-    return (my_nm("./a.out", false, 1, 0));
+    return (my_nm("\'a.out\'", false, 1, 0));
   while (i < ac)
     {
       if (my_nm(av[i], ((ac >= 3) ? true : false), ac, i) == EXIT_FAILURE)
