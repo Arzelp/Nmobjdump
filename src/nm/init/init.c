@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:27:53 2017 Paskal Arzel
-** Last update Thu Feb 23 16:00:38 2017 Paskal Arzel
+** Last update Thu Feb 23 16:21:32 2017 Paskal Arzel
 */
 
 #include "my_nm.h"
@@ -48,10 +48,16 @@ static int		init_ptrs(t_nm	*nm)
 static int		init_sym(t_nm *nm)
 {
   if (nm->find_sym_idxs(nm) == EXIT_FAILURE)
+  {
+    nm->err = true;
     return (EXIT_FAILURE);
+  }
   nm->sym.symtb = (Elf64_Sym *)(nm->data + nm->sym.symshdr->sh_offset);
   if ((nm->sym.symtab = malloc(nm->sym.symshdr->sh_size + 1)) == NULL)
+  {
+    nm->err = true;
     return (EXIT_FAILURE);
+  }
   nm->sym.symtab = memcpy(nm->sym.symtab,
     nm->sym.symtb, nm->sym.symshdr->sh_size);
   nm->sym.sym_names = (char *)(nm->data + nm->sym.strtab->sh_offset);
