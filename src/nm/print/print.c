@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:09:41 2017 Paskal Arzel
-** Last update Wed Feb 22 15:27:40 2017 Paskal Arzel
+** Last update Thu Feb 23 15:49:23 2017 Paskal Arzel
 */
 
 #include <stdio.h>
@@ -91,7 +91,7 @@ void	print_sym_name(t_nm *nm)
       c = print_type(nm->sym.symtab[i], nm->shdr);
       if (c != 'a')
       {
-        if (nm->sym.symtab[i].st_value == 0)
+        if (nm->sym.symtab[i].st_value == 0 && c != 'T' && c != 't')
       		printf("                ");
         else
           printf("%016lx", nm->sym.symtab[i].st_value);
