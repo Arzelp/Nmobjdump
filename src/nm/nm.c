@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:11:54 2017 Paskal Arzel
-** Last update Wed Feb 22 15:47:31 2017 Paskal Arzel
+** Last update Thu Feb 23 16:13:14 2017 Paskal Arzel
 */
 
 #include <fcntl.h>
@@ -20,7 +20,10 @@ static int	my_nm_elf(t_nm *nm, char *filename)
     printf("\n%s:\n", filename);
   if (init_nm(nm) == EXIT_FAILURE)
   {
-    printf("./my_nm: %s: Format de fichier non reconnu\n", filename);
+    if (nm->err == true)
+	    fprintf(stderr, "nm: %s: no symbols\n", filename);
+    else
+    	fprintf(stderr, "nm: %s: File format not recognized\n", filename);
     return (EXIT_FAILURE);
   }
   nm->print_sym_name(nm);
@@ -68,7 +71,10 @@ int	my_nm(char *filename, bool multi, int count, int pos)
   data.ac = count;
   data.i = pos;
   if (filename == NULL || (data.fd = open(filename, O_RDONLY)) == -1)
+  {
+    fprintf(stderr, "nm: %s: No such file\n", filename);
     return (EXIT_FAILURE);
+  }
   data.fsize = data.filesize(data.fd);
   if ((data.data = mmap(NULL,
     data.filesize(data.fd), PROT_READ, MAP_SHARED, data.fd, 0)) == (void *)-1)
@@ -78,7 +84,7 @@ int	my_nm(char *filename, bool multi, int count, int pos)
   else if ((i = strncmp((char *)data.data, "!<arch>", 7)) == 0)
     return (my_nm_arch(&data, filename));
   else
-    printf("./my_nm: %s: Format de fichier non reconnu\n", filename);
+    fprintf(stderr, "nm: %s: File format not recognized\n", filename);
   return (EXIT_SUCCESS);
 }
 

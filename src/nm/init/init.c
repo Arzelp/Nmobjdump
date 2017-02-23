@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:27:53 2017 Paskal Arzel
-** Last update Wed Feb 22 11:56:11 2017 Paskal Arzel
+** Last update Thu Feb 23 16:00:38 2017 Paskal Arzel
 */
 
 #include "my_nm.h"
@@ -56,12 +56,16 @@ static int		init_sym(t_nm *nm)
     nm->sym.symtb, nm->sym.symshdr->sh_size);
   nm->sym.sym_names = (char *)(nm->data + nm->sym.strtab->sh_offset);
   if ((nm->sym.sym_nb = nm->get_sym_nb(nm)) < 0)
+  {
+    nm->err = true;
     return (EXIT_FAILURE);
+  }
   return (EXIT_SUCCESS);
 }
 
 int						init_nm(t_nm *nm)
 {
+  nm->err = false;
   if (init_ptrs(nm) == EXIT_FAILURE)
   {
     printf("init_ptrs failed\n");

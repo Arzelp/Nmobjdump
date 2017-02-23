@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 16 15:14:17 2017 Paskal Arzel
-** Last update Thu Feb 23 15:08:53 2017 Paskal Arzel
+** Last update Thu Feb 23 16:04:19 2017 Paskal Arzel
 */
 
 #ifndef NM_H__
@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#define EXIT_NOPEN 10
 #define ARCH_NAME_MAXSIZE 16
 #define ARCH_TRASH 32
 #define ARCH_SIZE 10
@@ -53,6 +54,7 @@ typedef struct s_longname
 typedef struct s_nm
 {
   bool					multi;
+  bool					err;
   int						i;
   int						ac;
   int					  pos;

@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 23 14:45:08 2017 Paskal Arzel
-** Last update Thu Feb 23 15:36:40 2017 Paskal Arzel
+** Last update Thu Feb 23 16:07:35 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -50,10 +50,6 @@ void		print_char(t_obj *obj, int i, int x)
   else
     printf(".");
   (void)i;
-/*  if (isprint((char *)(obj->shdr[x].sh_offset + i)[0]))
-    printf("%c", (char *)(obj->shdr[x].sh_offset + i)[0]);
-  else
-    printf(".");*/
 }
 
 void		print_line(t_obj *obj, int j, int x)
@@ -83,5 +79,4 @@ void		print_line(t_obj *obj, int j, int x)
 	    printf(" ");
     i++;
   }
-  printf("\n");
 }

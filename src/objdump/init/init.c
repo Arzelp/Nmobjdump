@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:50:39 2017 Paskal Arzel
-** Last update Thu Feb 23 15:28:44 2017 Paskal Arzel
+** Last update Thu Feb 23 16:07:14 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -40,7 +40,8 @@ static int		init_ptrs(t_obj	*obj)
   obj->phdr = (Elf64_Phdr *)(obj->data + obj->elf->e_phoff);
   if ((char *)obj->phdr > (char *)(obj->data + obj->fsize))
     return (EXIT_FAILURE);
-  obj->sct_names = (char *)(obj->data + obj->shdr[obj->elf->e_shstrndx].sh_offset);
+  obj->sct_names =
+    (char *)(obj->data + obj->shdr[obj->elf->e_shstrndx].sh_offset);
   if ((char *)obj->sct_names > (char *)(obj->data + obj->fsize))
     return (EXIT_FAILURE);
   return (EXIT_SUCCESS);

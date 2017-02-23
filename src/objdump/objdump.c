@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:44:47 2017 Paskal Arzel
-** Last update Thu Feb 23 13:40:13 2017 Paskal Arzel
+** Last update Thu Feb 23 16:12:50 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -14,10 +14,9 @@ int		my_obj_elf(t_obj *obj, char *filename)
 {
   if (init_obj(obj) == EXIT_FAILURE)
   {
-    printf("./my_obj: %s: Format de fichier non reconnu\n", filename);
+    fprintf(stderr, "objdump: %s: File format not recognized\n", filename);
     return (EXIT_FAILURE);
   }
-  //obj->print_sh_name(obj);
   obj->print_obj_data(obj);
   return (EXIT_SUCCESS);
 }
@@ -30,17 +29,18 @@ int		my_objdump(char *filename)
   (void)filename;
   set_obj_fct(&data);
   if (filename == NULL || (data.fd = open(filename, O_RDONLY)) == -1)
+  {
+    fprintf(stderr, "nm: %s: No such file\n", filename);
     return (EXIT_FAILURE);
+  }
   data.fsize = data.filesize(data.fd);
   if ((data.data = mmap(NULL,
     data.filesize(data.fd), PROT_READ, MAP_SHARED, data.fd, 0)) == (void *)-1)
     return (EXIT_FAILURE);
   if ((i = strncmp((char *)data.data + 1, "ELF", 3)) == 0)
     return (my_obj_elf(&data, filename));
-  /*else if ((i = strncmp((char *)data.data, "!<arch>", 7)) == 0)
-    return (my_obj_arch(&data, filename));*/
   else
-    printf("./my_nm: %s: Format de fichier non reconnu\n", filename);
+    fprintf(stderr, "objdump: %s: File format not recognized\n", filename);
   return (EXIT_SUCCESS);
 }
 
@@ -50,7 +50,7 @@ int		main(int ac, char **av)
 
   i = 1;
   if (ac == 1)
-    return (my_objdump("a.out"));
+    return (my_objdump("./a.out"));
   while (i < ac)
     {
       if (my_objdump(av[i]) == EXIT_FAILURE)
