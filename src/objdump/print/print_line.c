@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 23 14:45:08 2017 Paskal Arzel
-** Last update Thu Feb 23 16:07:35 2017 Paskal Arzel
+** Last update Sat Feb 25 17:25:30 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -69,7 +69,7 @@ void		print_line(t_obj *obj, int j, int x)
 	    printf("  ");
     i++;
   }
-  printf(" ");
+  printf("  ");
   i = 0;
   while (i < SIZE_HEXA)
   {

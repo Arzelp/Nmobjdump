@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:45:27 2017 Paskal Arzel
-** Last update Thu Feb 23 15:28:29 2017 Paskal Arzel
+** Last update Sat Feb 25 16:19:30 2017 Paskal Arzel
 */
 
 #ifndef OBJDUMP_H__
@@ -68,6 +68,7 @@ typedef struct s_obj
   t_longname		*lgnm;
   int						(*calc_size_print)(int, int);
   int						(*filesize)(int);
+  void					(*print_header)(struct s_obj *, char *);
   void					(*print_sh_name)(struct s_obj *);
   void					(*print_obj_data)(struct s_obj *);
   void					(*print_name)(struct s_obj *, int);
@@ -89,5 +90,6 @@ void	print_char_hexa(t_obj *obj, int i, int x);
 void	print_nb(t_obj *obj, int j);
 int		init_obj(t_obj *obj);
 int		calc_size_print(int pos, int len);
+void	print_header(t_obj *obj, char *filename);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:50:39 2017 Paskal Arzel
-** Last update Thu Feb 23 16:07:14 2017 Paskal Arzel
+** Last update Sat Feb 25 15:40:58 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -26,6 +26,7 @@ void		set_obj_fct(t_obj *obj)
   obj->print_char = &print_char;
   obj->print_char_hexa = &print_char_hexa;
   obj->print_data = &print_data;
+  obj->print_header = &print_header;
   obj->calc_size_print = &calc_size_print;
 }
 

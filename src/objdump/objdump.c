@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:44:47 2017 Paskal Arzel
-** Last update Thu Feb 23 16:19:00 2017 Paskal Arzel
+** Last update Sat Feb 25 17:21:47 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -17,6 +17,7 @@ int		my_obj_elf(t_obj *obj, char *filename)
     fprintf(stderr, "objdump: %s: File format not recognized\n", filename);
     return (EXIT_FAILURE);
   }
+  obj->print_header(obj, filename);
   obj->print_obj_data(obj);
   return (EXIT_SUCCESS);
 }

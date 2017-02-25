@@ -5,7 +5,7 @@
 ## Login   <paskal.arzel@epitech.eu>
 ##
 ## Started on  Tue Jan 24 14:13:29 2017 Paskal Arzel
-## Last update Thu Feb 23 15:41:29 2017 Paskal Arzel
+## Last update Sat Feb 25 15:40:36 2017 Paskal Arzel
 ##
 
 ECHO	= /bin/echo -e
@@ -32,7 +32,8 @@ SRC_OBJ	=	 $(DIR_OBJ)objdump.c \
 					$(DIR_OIN)init.c \
 					$(DIR_OPR)print.c \
 					$(DIR_OPR)calc_print.c \
-					$(DIR_OPR)print_line.c
+					$(DIR_OPR)print_line.c \
+					$(DIR_OPR)print_header.c
 
 DIR = src/
 

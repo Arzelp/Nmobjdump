@@ -5,14 +5,14 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 23 13:30:43 2017 Paskal Arzel
-** Last update Thu Feb 23 16:13:53 2017 Paskal Arzel
+** Last update Sat Feb 25 18:15:59 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
 
 void	print_name(t_obj *obj, int i)
 {
-  printf("Contents of section: %s\n", &obj->sct_names[obj->shdr[i].sh_name]);
+  printf("Contents of section %s:\n", &obj->sct_names[obj->shdr[i].sh_name]);
 }
 
 void	print_data(t_obj *obj, int i)
@@ -40,8 +40,11 @@ void	print_obj_data(t_obj *obj)
   i = 0;
   while (i < obj->elf->e_shnum - 3)
   {
-    obj->print_name(obj, i);
-    obj->print_data(obj, i);
+    if (strlen(&obj->sct_names[obj->shdr[i].sh_name]) > 0)
+	    {
+        obj->print_name(obj, i);
+        obj->print_data(obj, i);
+      }
     i++;
   }
 }
