@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:45:27 2017 Paskal Arzel
-** Last update Sun Feb 26 16:24:01 2017 Paskal Arzel
+** Last update Sun Feb 26 16:44:20 2017 Paskal Arzel
 */
 
 #ifndef OBJDUMP_H__
@@ -51,6 +51,7 @@ typedef struct s_print
 typedef struct s_obj
 {
   bool					multi;
+  bool					o;
   int						i;
   int						ac;
   int					  pos;

@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Feb 26 16:11:42 2017 Paskal Arzel
-** Last update Sun Feb 26 16:25:44 2017 Paskal Arzel
+** Last update Sun Feb 26 16:45:17 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -20,7 +20,7 @@ static void	print_filename32(char *filename)
   printf("%s:     ", filename);
 }
 
-static void	print_fanions32(char *filename)
+static void	print_fanions32(t_obj *obj, char *filename)
 {
   int	len;
 
@@ -29,19 +29,23 @@ static void	print_fanions32(char *filename)
   if (len > 2 && filename[len - 2] == '.' && filename[len - 1] == 'o')
     {
       printf("0x%.8d:\nHAS_RELOC, HAS_SYMS\n", 11);
+      obj->o = true;
       return;
     }
   if (len > 3 && filename[len - 3] == '.' && filename[len - 2] == 's'
     && filename[len - 1] == 'o')
     {
       printf("0x%.8d:\nHAS_SYMS, DYNAMIC, D_PAGED\n", 150);
+      obj->o = false;
       return;
     }
   if ((len > 2 && filename[len - 2] != '.') || len < 2)
     {
       printf("0x%.8d:\nEXEC_P, HAS_SYMS, D_PAGED\n", 112);
+      obj->o = false;
       return;
     }
+  obj->o = false;
   printf("0x%.8d:\n", 0);
 }
 
@@ -51,6 +55,6 @@ void	print_header32(t_obj *obj, char *filename)
   printf("\n");
   print_filename32(filename);
   print_format32();
-  print_fanions32(filename);
+  print_fanions32(obj, filename);
   printf("start address 0x%.16lx\n\n", obj->elf->e_entry);
 }

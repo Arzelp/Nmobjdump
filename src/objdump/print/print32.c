@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Feb 26 16:15:24 2017 Paskal Arzel
-** Last update Sun Feb 26 16:32:26 2017 Paskal Arzel
+** Last update Sun Feb 26 16:46:39 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -44,10 +44,12 @@ void	print_obj_data32(t_obj *obj)
         (char)(obj->sct_names[obj->shdr[i].sh_name]) == '.')
 	    {
         if (strcmp(&obj->sct_names[obj->shdr[i].sh_name], ".bss") != 0
-        && obj->shdr[i].sh_size > 0)
+    	    && obj->shdr[i].sh_size > 0
+          && (strncmp(&obj->sct_names[obj->shdr[i].sh_name], ".rela", 5) != 0
+          || obj->o == false))
         {
-          obj->print_name32(obj, i);
-          obj->print_data32(obj, i);
+          obj->print_name(obj, i);
+          obj->print_data(obj, i);
         }
       }
     i++;
