@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sat Feb 25 15:41:10 2017 Paskal Arzel
-** Last update Sun Feb 26 14:02:22 2017 Paskal Arzel
+** Last update Sun Feb 26 15:26:11 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -52,5 +52,5 @@ void	print_header(t_obj *obj, char *filename)
   print_filename(filename);
   print_format();
   print_fanions(filename);
-  printf("start adress 0x%.16lx", obj->elf->e_entry);
+  printf("start address 0x%.16lx\n\n", obj->elf->e_entry);
 }
