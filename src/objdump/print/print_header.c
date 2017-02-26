@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sat Feb 25 15:41:10 2017 Paskal Arzel
-** Last update Sat Feb 25 18:15:06 2017 Paskal Arzel
+** Last update Sun Feb 26 14:02:22 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -31,6 +31,12 @@ void	print_fanions(char *filename)
       printf("0x%.8d:\nHAS_RELOC, HAS_SYMS\n", 11);
       return;
     }
+  if (len > 3 && filename[len - 3] == '.' && filename[len - 2] == 's'
+    && filename[len - 1] == 'o')
+    {
+      printf("0x%.8d:\nHAS_SYMS, DYNAMIC, D_PAGED\n", 150);
+      return;
+    }
   if ((len > 2 && filename[len - 2] != '.') || len < 2)
     {
       printf("0x%.8d:\nEXEC_P, HAS_SYMS, D_PAGED\n", 112);
@@ -46,5 +52,5 @@ void	print_header(t_obj *obj, char *filename)
   print_filename(filename);
   print_format();
   print_fanions(filename);
-  printf("start adress 0x%.16lx\n\n", obj->elf->e_entry);
+  printf("start adress 0x%.16lx", obj->elf->e_entry);
 }
