@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 23 13:30:43 2017 Paskal Arzel
-** Last update Sun Feb 26 15:18:37 2017 Paskal Arzel
+** Last update Sun Feb 26 16:32:39 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -43,7 +43,8 @@ void	print_obj_data(t_obj *obj)
     if (strlen(&obj->sct_names[obj->shdr[i].sh_name]) > 0 &&
         (char)(obj->sct_names[obj->shdr[i].sh_name]) == '.')
 	    {
-        if (strcmp(&obj->sct_names[obj->shdr[i].sh_name], ".bss") != 0)
+        if (strcmp(&obj->sct_names[obj->shdr[i].sh_name], ".bss") != 0
+    	    && obj->shdr[i].sh_size > 0)
         {
           obj->print_name(obj, i);
           obj->print_data(obj, i);

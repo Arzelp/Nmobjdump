@@ -5,14 +5,14 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Feb 26 16:11:42 2017 Paskal Arzel
-** Last update Sun Feb 26 16:17:47 2017 Paskal Arzel
+** Last update Sun Feb 26 16:25:44 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
 
 static void	print_format32(void)
 {
-  printf("file format elf64-x86-64\narchitecture: i386:x86-64, ");
+  printf("file format elf32-i386\narchitecture: i386, ");
 }
 
 static void	print_filename32(char *filename)
