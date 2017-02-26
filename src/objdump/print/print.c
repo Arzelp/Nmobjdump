@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Feb 23 13:30:43 2017 Paskal Arzel
-** Last update Sat Feb 25 18:15:59 2017 Paskal Arzel
+** Last update Sun Feb 26 13:58:32 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -40,11 +40,14 @@ void	print_obj_data(t_obj *obj)
   i = 0;
   while (i < obj->elf->e_shnum - 3)
   {
-    if (strlen(&obj->sct_names[obj->shdr[i].sh_name]) > 0)
+    if (strlen(&obj->sct_names[obj->shdr[i].sh_name]) > 0 &&
+        (char)(obj->sct_names[obj->shdr[i].sh_name]) == '.')
 	    {
         obj->print_name(obj, i);
         obj->print_data(obj, i);
       }
+    else
+	    printf("\n%c\n", (char)(*((obj->data + obj->shdr[i].sh_offset))));
     i++;
   }
 }
