@@ -1,26 +1,26 @@
 /*
-** print_header.c for print_header in /home/paskal/rendu/System_Unix/PSU_2016_nmobjdump/src/objdump/print/
+** print_header32.c for print_header23 in /home/paskal/rendu/System_Unix/PSU_2016_nmobjdump/src/objdump/print/
 **
 ** Made by Paskal Arzel
 ** Login   <paskal.arzel@epitech.eu>
 **
-** Started on  Sat Feb 25 15:41:10 2017 Paskal Arzel
-** Last update Sun Feb 26 16:12:29 2017 Paskal Arzel
+** Started on  Sun Feb 26 16:11:42 2017 Paskal Arzel
+** Last update Sun Feb 26 16:17:47 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
 
-static void	print_format(void)
+static void	print_format32(void)
 {
   printf("file format elf64-x86-64\narchitecture: i386:x86-64, ");
 }
 
-static void	print_filename(char *filename)
+static void	print_filename32(char *filename)
 {
   printf("%s:     ", filename);
 }
 
-static void	print_fanions(char *filename)
+static void	print_fanions32(char *filename)
 {
   int	len;
 
@@ -45,12 +45,12 @@ static void	print_fanions(char *filename)
   printf("0x%.8d:\n", 0);
 }
 
-void	print_header(t_obj *obj, char *filename)
+void	print_header32(t_obj *obj, char *filename)
 {
   (void)obj;
   printf("\n");
-  print_filename(filename);
-  print_format();
-  print_fanions(filename);
+  print_filename32(filename);
+  print_format32();
+  print_fanions32(filename);
   printf("start address 0x%.16lx\n\n", obj->elf->e_entry);
 }

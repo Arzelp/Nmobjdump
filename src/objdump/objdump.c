@@ -5,13 +5,35 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:44:47 2017 Paskal Arzel
-** Last update Sat Feb 25 17:21:47 2017 Paskal Arzel
+** Last update Sun Feb 26 16:18:25 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
 
+int		my_obj_elf32(t_obj *obj, char *filename)
+{
+  if (init_obj32(obj) == EXIT_FAILURE)
+  {
+    fprintf(stderr, "objdump: %s: File format not recognized\n", filename);
+    return (EXIT_FAILURE);
+  }
+  obj->print_header32(obj, filename);
+  obj->print_obj_data32(obj);
+  return (EXIT_SUCCESS);
+}
+
 int		my_obj_elf(t_obj *obj, char *filename)
 {
+  obj->testelf = (Elf64_Ehdr *)obj->data;
+  if ((char *)obj->elf > (char *)(obj->data + obj->fsize))
+    return (EXIT_FAILURE);
+  if (obj->testelf->e_ident[EI_CLASS] == ELFCLASS32)
+    return (my_obj_elf32(obj, filename));
+  else if (obj->testelf->e_ident[EI_CLASS] == ELFCLASSNONE)
+  {
+    fprintf(stderr, "objdump: %s: File format not recognized\n", filename);
+    return (EXIT_FAILURE);
+  }
   if (init_obj(obj) == EXIT_FAILURE)
   {
     fprintf(stderr, "objdump: %s: File format not recognized\n", filename);

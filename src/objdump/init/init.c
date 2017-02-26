@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:50:39 2017 Paskal Arzel
-** Last update Sat Feb 25 15:40:58 2017 Paskal Arzel
+** Last update Sun Feb 26 16:24:27 2017 Paskal Arzel
 */
 
 #include "my_obj.h"
@@ -19,14 +19,23 @@ void		set_obj_fct(t_obj *obj)
 {
   obj->filesize = &filesize;
   obj->print_sh_name = &print_sh_name;
+  obj->print_sh_name32 = &print_sh_name32;
   obj->print_obj_data = &print_obj_data;
+  obj->print_obj_data32 = &print_obj_data32;
   obj->print_name = &print_name;
+  obj->print_name32 = &print_name32;
   obj->print_nb = &print_nb;
+  obj->print_nb32 = &print_nb32;
   obj->print_line = &print_line;
+  obj->print_line32 = &print_line32;
   obj->print_char = &print_char;
   obj->print_char_hexa = &print_char_hexa;
+  obj->print_char32 = &print_char32;
+  obj->print_char_hexa32 = &print_char_hexa32;
   obj->print_data = &print_data;
+  obj->print_data32 = &print_data32;
   obj->print_header = &print_header;
+  obj->print_header32 = &print_header32;
   obj->calc_size_print = &calc_size_print;
 }
 
