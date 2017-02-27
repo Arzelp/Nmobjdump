@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Feb 22 15:44:47 2017 Paskal Arzel
-** Last update Sun Feb 26 16:18:25 2017 Paskal Arzel
+** Last update Mon Feb 27 15:34:43 2017 Paskal
 */
 
 #include "my_obj.h"
@@ -25,8 +25,6 @@ int		my_obj_elf32(t_obj *obj, char *filename)
 int		my_obj_elf(t_obj *obj, char *filename)
 {
   obj->testelf = (Elf64_Ehdr *)obj->data;
-  if ((char *)obj->elf > (char *)(obj->data + obj->fsize))
-    return (EXIT_FAILURE);
   if (obj->testelf->e_ident[EI_CLASS] == ELFCLASS32)
     return (my_obj_elf32(obj, filename));
   else if (obj->testelf->e_ident[EI_CLASS] == ELFCLASSNONE)
